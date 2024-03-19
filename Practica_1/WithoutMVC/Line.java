@@ -8,6 +8,10 @@ public class Line extends Observable {
     private int index;
     private boolean insertMode;
 
+    public boolean getInsertMode() {
+        return insertMode;
+    }
+
     public Line() {
         inputText = new StringBuilder(); // Altre opció utilitzar List de chars
         index = 0;
@@ -15,13 +19,18 @@ public class Line extends Observable {
     }
 
     public void moveToLeft() {
-        if (index > 0){
+        if (index > 0) {
             index--;
             this.notifyObservers("\033[D");
         }
     }
 
     public void moveToRight() {
+        System.out.println(inputText.length());
+        if (index < inputText.length()) {
+            index++;
+            this.notifyObservers("\033[C");
+        }
     }
 
     public void moveToStart() {
@@ -33,6 +42,10 @@ public class Line extends Observable {
     }
 
     public void supr() {
+        if (index > 0) {
+            inputText.deleteCharAt(index - 1);
+            index--;
+        }
     }
 
     public void switchInsert() {
@@ -44,7 +57,7 @@ public class Line extends Observable {
         inputText.append(input);
     }
 
-    public String getText(){
+    public String getText() {
         return inputText.toString();
     }
 }
