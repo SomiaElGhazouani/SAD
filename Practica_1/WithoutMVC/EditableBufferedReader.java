@@ -114,38 +114,42 @@ public class EditableBufferedReader extends BufferedReader {
 
         int input = this.read();
 
-        while (input != 13) {
+        while (input != Key.ENTER) {
             switch (input) {
                 case Key.ESQUERRA:
                     //System.out.print("\033[D");
-                    System.out.println("Moving to the left");
+                    //System.out.println("Moving to the left");
                     line.moveToLeft();
                     break;
                 case Key.DRETA:
                     //System.out.print("\033[C");
-                    System.out.println("Moving to the right");
+                    //System.out.println("Moving to the right");
                     line.moveToRight();
                     break;
                 case Key.INICI:
-                    System.out.println("Moving to the start");
+                    //System.out.println("Moving to the start");
                     line.moveToStart();
                     break;
                 case Key.FI:
-                    System.out.println("Moving to the end");
+                    //System.out.println("Moving to the end");
                     line.moveToEnd();
                     break;
                 case Key.INSERT:
+                    System.out.print("\033[4l");
                     if (line.getInsertMode()) {
                         line.switchInsert();
-                        System.out.println("Insert mode OFF");
+                        System.out.print("Insert mode OFF");
                     } else {
                         line.switchInsert();
-                        System.out.println("Insert mode ON");
+                        System.out.print("Insert mode ON");
                     }
                     break;
                 case Key.SUPR:
-                    System.out.println("Deleting last char");
+                    //System.out.println("Deleting last char");
                     line.supr();
+                    break;
+                case Key.BPSK:
+                    line.backspace(); 
                     break;
                 default:
                     line.add((char) input);
