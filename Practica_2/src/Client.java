@@ -1,4 +1,6 @@
-package Practica_2;
+package Practica_2.src;
+
+import Practica_2.resources.Properties;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,10 +8,9 @@ import java.io.InputStreamReader;
 
 public class Client {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        int port = 8080;
-        MySocket mySocket = new MySocket("localhost", port);
+        MySocket mySocket = new MySocket(Properties.localhost, Properties.port);
 
         // Input THread
         new Thread(() -> {

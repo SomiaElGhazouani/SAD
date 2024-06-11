@@ -1,4 +1,4 @@
-package Practica_2;
+package Practica_2.src;
 
 import java.io.IOException;
 import java.net.ServerSocket;

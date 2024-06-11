@@ -1,4 +1,6 @@
-package Practica_2;
+package Practica_2.src;
+
+import Practica_2.resources.Properties;
 
 import java.io.IOException;
 import java.util.Map;
@@ -10,13 +12,12 @@ public class Server {
 
     public static void main(String[] args) throws IOException {
 
-        int auxPort = 8080;
-        MyServerSocket myServerSocket = new MyServerSocket(auxPort);
-        System.out.println("MyServerSocket creat correctament");
+        MyServerSocket myServerSocket = new MyServerSocket(Properties.port);
+        System.out.println("MyServerSocket iniciat correctament");
 
         while (true) {
             MySocket mySocket = myServerSocket.accept();
-            mySocket.println("Conectat i provant el println");
+            mySocket.println("Conectat al servidor");
 
             new Thread(() -> {
                 mySocket.println("Intrudueix el vostre nom d'usuari: ");
