@@ -10,11 +10,14 @@ public class MyServerSocket extends ServerSocket {
         super(port);
     }
 
-    public MySocket accept2(){
-        try{
-            System.out.println("accept2");
-            Socket socket = this.accept();
-            return new MySocket(socket);
+    @Override
+    public MySocket accept() {
+        try {
+            //System.out.println("accept2");
+            Socket socket = super.accept();
+            MySocket socket1 = new MySocket(socket);
+            //System.out.println("accept3");
+            return socket1;
         } catch (Exception exception) {
             exception.printStackTrace();
         }

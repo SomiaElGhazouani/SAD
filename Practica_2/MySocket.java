@@ -12,16 +12,26 @@ public class MySocket extends Socket {
     public MySocket(Socket socket) throws IOException {
         super();
         //super("server", 8080);
-        System.out.println("fora del try MySocket");
+        //System.out.println("fora del try MySocket server");
         try {
-            System.out.println("Dins del try MySocket");
             super.connect(new InetSocketAddress(socket.getInetAddress(), socket.getLocalPort()));
-            this.bufferedReader = new BufferedReader(new InputStreamReader(this.getInputStream()));
-            this.printWriter = new PrintWriter(new OutputStreamWriter(this.getOutputStream()), true);
+            this.bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            this.printWriter = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
         } catch (IOException exception) {
             exception.printStackTrace();
         }
 
+    }
+
+    public MySocket(String host, int port) {
+        super();
+        try {
+            super.connect(new InetSocketAddress(host, port));
+            this.bufferedReader = new BufferedReader(new InputStreamReader(super.getInputStream()));
+            this.printWriter = new PrintWriter(new OutputStreamWriter(super.getOutputStream()), true);
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
     }
 
     public void println(String inputText) {

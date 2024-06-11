@@ -15,14 +15,15 @@ public class Server {
         System.out.println("MyServerSocket creat correctament");
 
         while (true) {
-            MySocket mySocket = myServerSocket.accept2();
+            MySocket mySocket = myServerSocket.accept();
             mySocket.println("Conectat i provant el println");
 
             new Thread(() -> {
-                System.out.println("thread run");
+                //System.out.println("new thread");
                 mySocket.println("Intrudueix el vostre nom d'usuari: ");
                 String userName = mySocket.readLine();
                 clientMap.put(userName, mySocket);
+                //System.out.println(userName + " ha entrat al xat");
                 mySocket.println("Benvingut al xat " + userName);
                 String inputText;
                 while ((inputText = mySocket.readLine()) != null) {
