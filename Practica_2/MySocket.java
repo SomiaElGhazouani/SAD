@@ -9,14 +9,10 @@ public class MySocket extends Socket {
     private BufferedReader bufferedReader;
     private PrintWriter printWriter;
 
-    public MySocket(Socket socket) throws IOException {
-        super();
-        //super("server", 8080);
-        //System.out.println("fora del try MySocket server");
+    public MySocket(Socket socket) {
         try {
-            super.connect(new InetSocketAddress(socket.getInetAddress(), socket.getLocalPort()));
             this.bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            this.printWriter = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
+            this.printWriter = new PrintWriter(socket.getOutputStream(), true);
         } catch (IOException exception) {
             exception.printStackTrace();
         }
@@ -24,11 +20,10 @@ public class MySocket extends Socket {
     }
 
     public MySocket(String host, int port) {
-        super();
         try {
             super.connect(new InetSocketAddress(host, port));
             this.bufferedReader = new BufferedReader(new InputStreamReader(super.getInputStream()));
-            this.printWriter = new PrintWriter(new OutputStreamWriter(super.getOutputStream()), true);
+            this.printWriter = new PrintWriter(super.getOutputStream(), true);
         } catch (IOException exception) {
             exception.printStackTrace();
         }

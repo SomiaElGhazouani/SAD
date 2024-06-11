@@ -2,22 +2,18 @@ package Practica_2;
 
 import java.io.IOException;
 import java.net.ServerSocket;
-import java.net.Socket;
 
-public class MyServerSocket extends ServerSocket {
+public class MyServerSocket {
+
+    private final ServerSocket serverSocket;
 
     public MyServerSocket(int port) throws IOException {
-        super(port);
+        this.serverSocket = new ServerSocket(port);
     }
 
-    @Override
     public MySocket accept() {
         try {
-            //System.out.println("accept2");
-            Socket socket = super.accept();
-            MySocket socket1 = new MySocket(socket);
-            //System.out.println("accept3");
-            return socket1;
+            return new MySocket(this.serverSocket.accept());
         } catch (Exception exception) {
             exception.printStackTrace();
         }
