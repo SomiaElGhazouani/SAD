@@ -58,7 +58,7 @@ public class Line extends Observable {
 
     public void switchInsert() {
         insertMode = !insertMode;
-        System.out.println("\033[2~");
+        System.out.print("\033[2~");
     }
 
     public void backspace() {
@@ -71,8 +71,14 @@ public class Line extends Observable {
     }
 
     public void add(char input) {
-        inputText.insert(index,input);
+        if(insertMode){
+            inputText.setCharAt(index, input);
+        }
+        else{
+            inputText.insert(index,input);
+        }
         index++;
+        
     }
 
     public String getText() {

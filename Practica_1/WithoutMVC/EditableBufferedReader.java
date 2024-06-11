@@ -135,13 +135,13 @@ public class EditableBufferedReader extends BufferedReader {
                     line.moveToEnd();
                     break;
                 case Key.INSERT:
-                    System.out.print("\033[4l");
+                    //System.out.print("\033[4l");
                     if (line.getInsertMode()) {
                         line.switchInsert();
-                        System.out.print("Insert mode OFF");
+                        //System.out.print("Insert mode OFF");
                     } else {
                         line.switchInsert();
-                        System.out.print("Insert mode ON");
+                        //System.out.print("Insert mode ON");
                     }
                     break;
                 case Key.SUPR:
