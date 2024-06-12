@@ -1,6 +1,8 @@
-package Practica_2.src;
+package Practica_3.src;
 
-import Practica_2.resources.Properties;
+import Practica_3.resources.Properties;
+import Practica_3.src.resources.MyServerSocket;
+import Practica_3.src.resources.MySocket;
 
 import java.io.IOException;
 import java.util.Map;
