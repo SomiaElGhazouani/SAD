@@ -1,6 +1,10 @@
-package Practica_1.WithoutMVC;
+package Practica_1.WithMVC;
 
-import java.io.*;
+import Practica_1.WithMVC.EditableBufferedReader;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 class TestReadLine {
     public static void main(String[] args) {

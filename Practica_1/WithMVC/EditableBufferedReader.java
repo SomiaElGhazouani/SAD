@@ -1,5 +1,6 @@
-package Practica_1.WithoutMVC;
+package Practica_1.WithMVC;
 
+import Practica_1.WithMVC.Line;
 import Practica_1.resources.Key;
 
 import java.io.BufferedReader;
