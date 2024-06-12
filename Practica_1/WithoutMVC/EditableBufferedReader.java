@@ -18,7 +18,7 @@ public class EditableBufferedReader extends BufferedReader {
      * Assigna la consola a mode Raw
      */
     public void setRaw() throws IOException {
-        // Llista de comandes a executar atraves del ProcessBuilder
+        // Llista de comandes a executar a través del ProcessBuilder
         List<String> commandList = new ArrayList<String>();
         commandList.add("/bin/sh");
         commandList.add("-c");

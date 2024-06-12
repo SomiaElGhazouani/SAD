@@ -1,4 +1,4 @@
-package Practica_1.WithMVC;
+package Practica_1.WithMVC.Model;
 
 public class Line {
 
@@ -16,55 +16,58 @@ public class Line {
         insertMode = false;
     }
 
-    public void moveToLeft() {
+    public boolean moveToLeft() {
         if (index > 0) {
             index--;
-            System.out.print("\033[D");
+            return true;
         }
+        return false;
     }
 
-    public void moveToRight() {
+    public boolean moveToRight() {
         if (index < inputText.length()) {
             index++;
-            System.out.print("\033[C");
+            return true;
         }
+        return false;
     }
 
-    public void moveToStart() {
+    public boolean moveToStart() {
         if (index > 0) {
             index = 0;
-            System.out.print("\033[1G");
+            return true;
         }
+        return false;
     }
 
-    public void moveToEnd() {
+    public String moveToEnd() {
         if (index < inputText.length()) {
             int diff = inputText.length() - index;
             index = inputText.length();
-            System.out.print("\033[" + diff + "C");
+            return ("\033[" + diff + "C");
         }
+        return "";
     }
 
-    public void supr() {
+    public boolean supr() {
         if (index >= 0 && index < (inputText.length())) {
-            System.out.print("\033[P");
-            System.out.print("\033[D");
             inputText.deleteCharAt(index);
+            return true;
         }
+        return false;
     }
 
     public void switchInsert() {
         insertMode = !insertMode;
-        System.out.print("\033[2~");
     }
 
-    public void backspace() {
+    public boolean backspace() {
         if (index > 0) {
-            System.out.print("\033[D");
-            System.out.print("\033[P");
             inputText.deleteCharAt(index - 1);
             index--;
+            return true;
         }
+        return false;
     }
 
     public void add(char input) {
